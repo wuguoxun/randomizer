@@ -41,7 +41,7 @@ function setup() {
   starRandomizerButton.mousePressed(buttonPressed);
 
 
-  for (let i = 1; i < 5; i++) {
+  for (let i = 1; i < 7; i++) {
     nameInputs.push(createInput());
     nameInputs[nameInputs.length - 1].parent("#inputFields");
   }
@@ -62,7 +62,7 @@ function draw() {
 }
 
 function addAnotherInput() {
-  for (let i = 1; i < 3; i++) {
+  for (let i = 1; i < 2; i++) {
     nameInputs.push(createInput());
     nameInputs[nameInputs.length - 1].parent("#inputFields");
   }
