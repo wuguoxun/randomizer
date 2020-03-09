@@ -1,32 +1,14 @@
-let foods = [{
-
-  name: "pizza",
-  color: "red"
-}, {
-  name: "noddle",
-  color: "yellow"
-}, {
-  name: "burger",
-  color: "brown"
-}, {
-  name: "salad",
-  color: "green"
-
-}, {
-  name: "poke",
-  color: "orange"
-
-}, {
-  name: "yougert",
-  color: "blue"
-
-}];
-
+let foods = [];
 let randomIndex;
-let counter = 0;
 let animating = false;
 let lunchs = [];
 let imageCounter = 0;
+let starRandomizerButton;
+let cnv;
+// let button;
+let nameInputs = [];
+let addMoreButton;
+let firstTime = true;
 
 function preload() {
 
@@ -36,20 +18,33 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 600);
-  background(200);
-  textSize(35);
+  cnv = createCanvas(600, 500);
+  cnv.parent("#canvasDiv");
+  background(156, 93, 112);
+  textSize(144);
+  textFont('courier new');
+  textAlign(CENTER);
+  // textSytle(BOLD);
+  fill(0);
   imageMode(CENTER);
   frameRate(8);
 
-  text("click to randomizer");
+
+  // button = createButton('click to randomizer');
+  // button = select("#randButton");
+  // button.mousePressed(buttonPressed);
+  // button.class("randomizerButton");
+
+  addMoreButton = select("#addMoreButton")
+  addMoreButton.mousePressed(addAnotherInput);
+  starRandomizerButton = select("#randButton")
+  starRandomizerButton.mousePressed(buttonPressed);
 
 
-  button = createButton("click to randomizer");
-  button.mousePressed(buttonPressed);
-  // button.style("padding","20px");
-  // button.style("background-color","#f5cc5d");
-  button.class("randomizerButton");
+  for (let i = 1; i < 5; i++) {
+    nameInputs.push(createInput());
+    nameInputs[nameInputs.length - 1].parent("#inputFields");
+  }
 }
 
 function draw() {
@@ -63,40 +58,40 @@ function draw() {
     } else {
       imageCounter = 0;
     }
-
   }
+}
 
+function addAnotherInput() {
+  for (let i = 1; i < 3; i++) {
+    nameInputs.push(createInput());
+    nameInputs[nameInputs.length - 1].parent("#inputFields");
+  }
 }
 
 function randomizer() {
   animating = false;
 
   if (foods[0]) {
-    background(random(200, 255));
+    clear();
     randomIndex = int(random(foods.length));
-    text(`${foods[randomIndex].name} favorite color is
-      ${foods[randomIndex].color}`, 50, 50);
+    image(random(lunchs), width / 2, height / 2);
+    text(foods[randomIndex], width / 2, height * .2);
+    // text(foods[randomIndex].name, width / 2, height - 55);
     foods.splice(randomIndex, 1);
   } else {
-    background(random(200, 255));
-    text("nothing left", 50, 50);
-  }
-
-}
-
-function changeBackround() {
-  if (counter <= 5) {
-    counter++;
-    background(random(255), random(255), random(255));
-    setTimeout(changeBackround, 1000);
-  } else {
-
+    background(random(20, 40, 200));
+    text("Nothing", width / 2, height / 2);
   }
 }
 
-function mousePressed() {}
 
 function buttonPressed() {
+  if (firstTime) {
+    for (let i = 0; i < nameInputs.length; i++) {
+      foods.push(nameInputs[i].value());
+    }
+    firstTIme = false;
+  }
   animating = true;
   setTimeout(randomizer, 2000);
 }

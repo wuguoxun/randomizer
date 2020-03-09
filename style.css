@@ -1,13 +1,52 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: #494c70;
 }
 
 canvas {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
+  width: 800px;
 }
+
+
 
 .randomizerButton {
   padding: 20px;
   background-color: #f5cc5d;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 800px;
 }
+
+.addMoreButton {
+  padding: 20px;
+  background-color: #558762;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 400px;
+}
+
+.center-block {
+  margin: auto;
+  padding-left: 345px;
+  display: block;
+}
+/* .row {
+  display: flex;
+} */
+
+/* .column {
+  margin: 10px;
+  flex: 50%;
+} */
