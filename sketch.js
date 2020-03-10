@@ -1,4 +1,30 @@
 let foods = [];
+// [{
+//   name: "lunch",
+//   favoite: "salty",
+//   calorie: "high",
+// }, {
+//   name: "noddle",
+//   favoite: "salty",
+//   calorie: "mid",
+// }, {
+//   name: "burger",
+//   favoite: "salty",
+//   calorie: "high",
+// }, {
+//   name: "salad",
+//   favoite: "sweet",
+//   calorie: "low",
+// }, {
+//   name: "poke",
+//   favoite: "salty",
+//   calorie: "mid",
+// }, {
+//   name: "yougert",
+//   favoite: "sweet",
+//   calorie: "low",
+// }];
+
 let randomIndex;
 let animating = false;
 let lunchs = [];
@@ -41,7 +67,7 @@ function setup() {
   starRandomizerButton.mousePressed(buttonPressed);
 
 
-  for (let i = 1; i < 7; i++) {
+  for (let i = 1; i < 5; i++) {
     nameInputs.push(createInput());
     nameInputs[nameInputs.length - 1].parent("#inputFields");
   }
@@ -75,7 +101,7 @@ function randomizer() {
     clear();
     randomIndex = int(random(foods.length));
     image(random(lunchs), width / 2, height / 2);
-    text(foods[randomIndex], width / 2, height * .2);
+    text(foods[randomIndex].text, width / 2, height * .2);
     // text(foods[randomIndex].name, width / 2, height - 55);
     foods.splice(randomIndex, 1);
   } else {
